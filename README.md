@@ -1,4 +1,3 @@
-ocelotl
-=======
+# ocelotl
 
-Desarrolo del trabajo de Salvador
+a [Sails](http://sailsjs.org) application
