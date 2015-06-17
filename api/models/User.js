@@ -22,9 +22,13 @@ module.exports = {
   		type: 'string',
   		required: true,
   		unique: true
-  	}
-  },
+  	},
+    recoveryCode: "string",
+    verifyCode: "string",
+    verify: "boolean"
 
+  },
+  
   beforeCreate: function(user, next){
   	var bcrypt = require('bcrypt');
 

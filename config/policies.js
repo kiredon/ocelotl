@@ -27,11 +27,12 @@ module.exports.policies = {
   ***************************************************************************/
 
   '*': "authenticated",
-
+    
   UserController: {
     process: true,
     recoveryPassword: true,
-    create : true
+    create : true,
+    changePasswordWithCode : true
     },
 
   /***************************************************************************

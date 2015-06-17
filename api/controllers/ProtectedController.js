@@ -6,11 +6,11 @@
  */
 
 module.exports = {
-
+    
     index:function(req,res){
         console.log("HOLA INDEX");
         res.view('index');
     }
-
+	
 };
 

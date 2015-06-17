@@ -34,7 +34,7 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  },
+  }, 
   'post /login': 'UserController.process',
   'get /logout': 'UserController.logout',
   'get /index' : 'ProtectedController.index'

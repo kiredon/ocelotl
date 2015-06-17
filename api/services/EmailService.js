@@ -22,7 +22,7 @@ module.exports = {
             html: options.html // html body
         };
         // send mail with defined transport object
-
+   
         console.log('Sending Email: ' + JSON.stringify(mailOptions));
         /* NO PUEDO MANDAR LOS CORREOS SO NOMAS LOGUEO HASTA QUE SE DEFINA*/
         transporter.sendMail(mailOptions, function(error, info){

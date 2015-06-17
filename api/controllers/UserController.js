@@ -12,7 +12,7 @@ module.exports = {
 		passport.authenticate('local', function(err, user, info){
 			if((err) || (!user))
 				return res.json({code: -1, message: "Autenticación Fallida "+ user});
-
+			
 			req.login(user, function(err){
 				if(err) res.json({code: -2, message: "Error al iniciar sesión"});
 
@@ -27,7 +27,7 @@ module.exports = {
 	},
 
 	autenticado: function (req,res){
-    if(req.isAuthenticated())
+    if(req.isAuthenticated())  
         res.json({code:1});
       else
           res.json({code:-1});
@@ -42,25 +42,45 @@ module.exports = {
   				return res.json({code:-2, msg: err});
   			}
   			var word = eden.word() + new Date().getMilliseconds() + new Date().getMinutes();
-  			fuser.password = word;
+  			fuser.recoveryCode = word;
+            //delete fuser.password;
   			fuser.save();
   			var notificationMail = {
   				to: fuser.email,
   				subject: 'Restablecer contraseña',
-  				text: 'Tu nueva contraseña es: ' + word
+  				text: 'Tu código de recuperación es: ' + word
   			};
-  			EmailService.sendInviteEmail(notificationMail);
+  			//EmailService.sendInviteEmail(notificationMail);
   			console.log("PASSWORD: " + word);
-  			return res.json({code:1, wordG: word, pass: fuser.password})
+  			return res.json({code:1, wordG: word, pass: fuser})
   		});
   	},
 
   	create : function(req, res){
   		var usr = req.allParams();
+        usr.verify = false;
   		User.create(usr).exec(function(err, created){
   			if(err) return res.json(err);
   			res.json(created);
   		});
-  	}
+  	},
+
+    changePasswordWithCode : function(req, res){
+        var usr = req.allParams();
+        User.findOneByEmail(usr.email, function(err, fuser){
+            if(!fuser) return res.json({code:-1, msg: "No se recibe correo"});
+            if(err) return res.json({code:-2, msg:err});
+            if(fuser.recoveryCode == usr.recoveryCode){
+                console.log("MISMO CODIGO DE VERIF");
+                fuser.password = usr.password;
+                fuser.recoveryCode = undefined;
+                fuser.save();
+            }
+            else{
+                console.log("CODIGO NO COINCIDE");
+                return res.json({code:-1, msg:"Código incorrecto"});
+            }
+        });
+    }
 };
 
