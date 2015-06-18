@@ -24,6 +24,7 @@
 		//DENUNCIA PLD
 		.state('altaEmpleado', {url : "/altaEmpleado", templateUrl : "site/pages/altaEmpleado.html"})
         .state('blank', {url : "/blank", templateUrl : "site/pages/blank.html"})
+        .state('userSettings', {url : "/userSettings", templateUrl : "pages/user-settings.html"})
 
 	});
 

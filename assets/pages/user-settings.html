@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Configuración de cuenta</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="col-lg-8 col-md-offset-2">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Cambiar Contraseña
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal" ng-submit="loginCtrl.recoverPass()">
+					<div class="form-group">
+                        <label for="inputPassReg" class="col-sm-3 control-label">Contraseña anterior</label>
+                        <div class="input-group col-sm-8">
+                            <div class="input-group-addon"><span class="fa fa-lock"></span>
+                            </div>
+                            <input type="password" class="form-control" id="inputPassReg" placeholder="********" ng-model="loginCtrl.nuevoUsuario.password" ng-blur="loginCtrl.verificaPass()" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassReg" class="col-sm-3 control-label">Contraseña</label>
+                        <div class="input-group col-sm-8">
+                            <div class="input-group-addon"><span class="fa fa-lock"></span>
+                            </div>
+                            <input type="password" class="form-control" id="inputPassReg" placeholder="********" ng-model="loginCtrl.nuevoUsuario.password" ng-blur="loginCtrl.verificaPass()" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassRegRep" class="col-sm-3 control-label">Repetir Contraseña</label>
+                        <div class="input-group col-sm-8">
+                            <div class="input-group-addon"><span class="fa fa-lock"></span>
+                            </div>
+                            <input type="password" class="form-control" id="inputPassRegRep" placeholder="********" ng-model="loginCtrl.repeatPass" ng-blur="loginCtrl.verificaPass()" required>
+                        </div>
+                        <strong ng-show="!loginCtrl.samePass" class="textRed col-sm-offset-3">La contraseña no coincide</strong>
+                    </div>
+					<div class="form-group">
+						<div class="col-sm-4 col-sm-offset-4">
+							<button type="submit" class="btn btn-primary btn-block">Aceptar</button>
+						</div>
+					</div>
+				</form>
+
+            </div>
+            <div class="panel-footer">
+                Configuración
+            </div>
+        </div>
+    </div>
+</div>
