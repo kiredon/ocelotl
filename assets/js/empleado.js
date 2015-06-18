@@ -1,6 +1,6 @@
 (function(){
-    var app = angular.module('sipeApp',[]);
-    app.controller('EmpleadoController',['$scope', '$http', function($scope, $http){
+    var empleadoApp = angular.module('empleadoApp',[]);
+    empleadoApp.controller('EmpleadoController',['$scope', '$http', function($scope, $http){
         var employee = this;
         employee.nombre="";
         employee.apellidoP="";

@@ -1,6 +1,6 @@
 (function() {
 
-	var app = angular.module('sipeApp', [ 'ui.router']);
+	var app = angular.module('mainApp', [ 'ui.router', 'empleadoApp']);
 
 	app.controller('SipeController',['$http', '$scope', '$state', function($http, $scope, $state) {
 
@@ -22,7 +22,7 @@
 		// Now set up the states
 		$stateProvider
 		//DENUNCIA PLD
-		.state('altaEmpleado', {url : "/altaEmpleado", templateUrl : "site/pages/altaEmpleado.html"})
+		.state('altaEmpleado', {url : "/altaEmpleado", templateUrl : "pages/altaEmpleado.html"})
         .state('blank', {url : "/blank", templateUrl : "site/pages/blank.html"})
         .state('userSettings', {url : "/userSettings", templateUrl : "pages/user-settings.html"})
 
