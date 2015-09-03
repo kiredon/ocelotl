@@ -7,8 +7,8 @@
 
 module.exports = {
 
-    attributes: {
-        nombre:{
+  attributes: {
+      name:{
             type:'string',
             required:true
         },
@@ -27,6 +27,6 @@ module.exports = {
         }
 
 
-    }
+  }
 };
 
