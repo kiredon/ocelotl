@@ -37,7 +37,9 @@ module.exports.routes = {
   }, 
   'post /login': 'UserController.process',
   'get /logout': 'UserController.logout',
-  'get /index' : 'ProtectedController.index'
+  'get /index' : 'ProtectedController.index',
+  'post /altaEmpleado' : 'EmpleadoController.create',
+  'get /empleado' : {view:'empleado'}
 
   /***************************************************************************
   *                                                                          *
