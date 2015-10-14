@@ -18,9 +18,10 @@ passport.use(new LocalStrategy(
   function(username, password, done) {
     User.findOneByUsername(username,function(err, user) {
       if (err) { return done(null, err); }
-      if (!user || user.length < 1) { return done(null, false, { message: 'Incorrect User'}); }
+      if (!user || user.length < 1) { return done(null, false, { message: 'Usuario Incorrecto'}); }
+      if (!user.verify) {return done(null, false, {message: 'Cuenta sin validar'});}
       bcrypt.compare(password, user.password, function(err, res) {
-        if (!res) return done(null, false, { message: 'Invalid Password'});
+        if (!res) return done(null, false, { message: 'Contraseña Incorrecta'});
         return done(null, user);
       });
     });

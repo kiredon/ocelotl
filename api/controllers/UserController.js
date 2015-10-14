@@ -10,8 +10,9 @@ var eden = require('node-eden');
 module.exports = {
 	process: function(req, res){
 		passport.authenticate('local', function(err, user, info){
+            console.log(info);
 			if((err) || (!user))
-				return res.json({code: -1, message: "Autenticación Fallida "+ user});
+				return res.json({code: -1, message: info.message});
 			
 			req.login(user, function(err){
 				if(err) res.json({code: -2, message: "Error al iniciar sesión"});
@@ -50,7 +51,7 @@ module.exports = {
   				subject: 'Restablecer contraseña',
   				text: 'Tu código de recuperación es: ' + word
   			};
-  			//EmailService.sendInviteEmail(notificationMail);
+  			EmailService.sendInviteEmail(notificationMail);
   			console.log("PASSWORD: " + word);
   			return res.json({code:1, wordG: word, pass: fuser})
   		});
@@ -61,6 +62,14 @@ module.exports = {
         usr.verify = false;
   		User.create(usr).exec(function(err, created){
   			if(err) return res.json(err);
+
+            var mail = {
+            to: usr.email,
+            subject: 'Bienvenido a Ocelotl',
+            html: 'Te damos la bienvenida al equipo de Ocelotl. Tu cuenta casi está lista, solo necesitas verificarla. Para eso, da clic <a href="taringa.net">aqu&iacute;</a>.'
+        };
+  			EmailService.sendInviteEmail(mail);
+
   			res.json(created);
   		});
   	},

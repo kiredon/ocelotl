@@ -26,7 +26,7 @@
 								<input type="password" class="form-control" id="inputPass" placeholder="********" ng-model="loginCtrl.usuario.password">
 							</div>
 						</div>
-                        <strong ng-if="loginCtrl.failLogin" class="textRed col-sm-offset-3">El usuario o la contraseña es incorrecta.</strong><br><br>
+                        <strong ng-if="loginCtrl.failLogin" class="textRed col-sm-offset-3">{{loginCtrl.msgLogin}}</strong><br><br>
 						<!--<div class="form-group">
 							<div class="col-sm-offset-4 col-sm-2">
 								<div class="checkbox">

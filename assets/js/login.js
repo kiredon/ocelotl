@@ -16,6 +16,7 @@
         loginVars.repeatPass = null;
         loginVars.repeatPassRecovery = null;
         loginVars.failLogin = false;
+        loginVars.msgLogin;
 
         //Creacion de usuario
         loginVars.cuentaCreada = false;
@@ -30,6 +31,7 @@
                 }
                 else{
                     console.log("Error");
+                    loginVars.msgLogin = datos.message;
                     loginVars.failLogin = true;
                 }
             }).error(function(error,status){
